@@ -1,0 +1,90 @@
+
+<div class="container">
+
+    <div class="row">
+        <div class = "col-md-6 offset-md-3">
+            <form [formGroup]="Validations" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && Validations.get('firstname')?.invalid }" type="text" class="form-control">
+                <div *ngIf="submitted && Validations.get('firstname')?.errors" class="text-danger">
+                  <div *ngIf="submitted && Validations.get('firstname')?.errors?.['required']">
+                    First name is Mandotory
+                  </div>
+                </div>
+              </div>
+              
+                <div class="form-group">
+                  <label for="lastName">Last Name:</label>
+                  <input formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && Validations.get('lastname')?.invalid }" type="text" class="form-control">
+                  <div *ngIf="submitted && Validations.get('lastname')?.errors" class="text-danger">
+                    <div 
+                    *ngIf="submitted && Validations.get('lastname')?.errors?.['required']">
+                    LastName is Mandotory
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && Validations.get('email')?.invalid }" type="text" class="form-control">
+                  <div *ngIf="submitted && Validations.get('email')?.errors" class="text-danger">
+                    <div *ngIf="submitted && Validations.get('email')?.errors?.['required']">
+                      Email is mandatory
+                    </div>
+                    <div *ngIf="submitted && Validations.get('email')?.errors?.['email']">
+                      Should be in correct format
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="state">State:</label>
+                  <select formControlName="state" class="form-control">
+                    <option value="" disabled selected>&#9660; Select a state</option>
+                    <option *ngFor="let state of getStatesForSelectedCountry()" [value]="state">{{ state }}</option>
+                  </select>
+                  <div *ngIf="submitted && Validations.get('state')?.invalid" class="text-danger">State name is required.</div>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country:</label>
+                  <select formControlName="country" class="form-control"  (change)="onCountryChange()">
+                    <option value="" disabled selected>&#9660; Select a country</option>
+                    <option value="INDIA">India </option>
+                    <option value="US"> America</option>
+                  </select>
+                  <div *ngIf="submitted && Validations.get('lastname')?.invalid" class="text-danger">Country name is required.</div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Password:</label>
+                  <input formControlName="password" type="text" class="form-control">
+                  <div *ngIf="submitted && Validations.get('password')?.errors" class="text-danger">
+                    <div *ngIf ="submitted && Validations.get('password')?.errors?.['required']" class="text-danger" >
+                      Password is Required
+                    </div>
+                    <div *ngIf = "submitted && Validations.get('password')?.errors?.['pattern']">
+                      password must contain with valid format
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="pincode">Pincode:</label>
+                  <input formControlName="pincode" type="text" class="form-control">
+                  <div *ngIf="submitted && Validations.get('lastname')?.invalid" class="text-danger">
+                  <div *ngIf="submitted && Validations.get('pincode')?.errors?.['required']" class ="text-danger">
+                    pincode is Required
+                  </div>
+                  <div *ngIf="submitted && Validations.get('pincode')?.errors?.['pattern']">
+                    It must contain only 5 didgits
+                  </div>
+                </div>
+                </div>
+                
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            
+              </form>
+          </div>
+    </div>
+  </div>

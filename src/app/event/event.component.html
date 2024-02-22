@@ -1,0 +1,18 @@
+<!-- <p>event works!</p>
+<p>{{name}}</p>
+<input type ="text" (change)="change()">
+<input type="button" value="saving" (click)="clickfun()" (mouseover)="over() "> -->
+<h2> users component</h2>
+<button class="btn btn-primary" [disabled]="!allownewuser" (click)="changestatus()">Add user</button>
+<div>{{usercreatedstatus}}</div>
+<br>
+<div class="my-2">
+<label> user name</label>
+<input type="text" class="form-control" (input)="onUpdateUser($event)"/>
+<br>
+<input type="text" class="form-control" [(ngModel)]="username"/>
+<div>{{username}}</div>
+</div>
+<div *ngIf = isUserCreated > user is created with the name of {{username}}</div>
+
+<app-work></app-work>
