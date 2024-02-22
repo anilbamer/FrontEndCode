@@ -4,32 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-qJU21o5oqyfZOaxpOWvyt4nScKicM++tz+VIzuw6A1Jioa1XDPLV9LCbcXvBp7mNE5LtLxlVDbnAAZwuEG5VJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
+<div class="wel">
+  <h1> Welcome Page</h1>
+</div>
 <body>
-    <div class="container">
+  <div class="container">
+    <div class="form-container">
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <input type="text" formControlName="username" placeholder="Username">
-            <div *ngIf="submitted && formControls['username'].errors" class="error">
-              Username is required
+            <div class="form-group">
+                <input type="text" formControlName="firstName" placeholder="firstName">
+                <div *ngIf="submitted && formControls['firstName'].errors" class="error">
+                    Username is required
+                </div>
             </div>
-          </div>
-          <div class="form-group">
-            <input type="password" formControlName="password" placeholder="Password">
-            <div *ngIf="submitted && formControls['password'].errors" class="error">
-              Password is required
+            <div class="form-group">
+                <input type="password" formControlName="lastName" placeholder="lastName">
+                <div *ngIf="submitted && formControls['lastName'].errors" class="error">
+                    Password is required
+                </div>
             </div>
-          </div>
-          <div class="form-group">
-            <button type="submit">Sign In</button>
-          </div>
-          <div *ngIf="successMessage" class="success-message">
-            {{ successMessage }}
-          </div>
+            <div class="form-group">
+                <input type="text" formControlName="email" placeholder="email">
+                <div *ngIf="submitted && formControls['email'].errors" class="error">
+                    Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" formControlName="phonenumber" placeholder="PhoneNumber">
+                <div *ngIf="submitted && formControls['phonenumber'].errors" class="error">
+                    PhoneNumber is required
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add</button>
+            </div>
+            <div *ngIf="successMessage" class="success-message">
+                {{ successMessage }}
+            </div>
         </form>
-      </div>
-      
-      
-      
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of details">
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phonenumber }}</td>
+                    <td>
+                        <button (click)="deleteUser(user.id)">Delete</button>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ import { FormsModule} from '@angular/forms';
 import { WorkComponent } from './work/work.component';
 import { EventComponent } from './event/event.component';
 import { SigninComponent } from './signin/signin.component';
+import { ViewComponent } from './view/view.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SigninComponent } from './signin/signin.component';
     ExampleComponent,
     WorkComponent,
     EventComponent,
-    SigninComponent
+    SigninComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
