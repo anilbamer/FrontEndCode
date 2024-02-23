@@ -29,15 +29,22 @@ getuserdetails()
     this.userdata=response.resultData
   })
 }
-submit(){
-const form = this.loginForm.value
-console.log(this.userdata)
-this.userdata.forEach((user:any)=>{ 
-  console.log(user)
-  if(user.username == form.username && user.password == form.password)
-  {   
-    this.route.navigate(['/exg']) 
-  } 
-  })
+submit() {
+  const form = this.loginForm.value;
+  console.log('User Data:', this.userdata);
+
+  let userFound = false;
+  this.userdata.forEach((user: any) => {
+    if (user.username === form.username && user.password === form.password) {
+      console.log('Login successful');
+      this.route.navigate(['/exg']);
+      userFound = true;
+    }
+  });
+  if (!userFound) {
+    console.log('Data mismatch: Username or password is incorrect');
+    alert('Invalid username or password. Please try again.');
+  }
 }
+
 }
